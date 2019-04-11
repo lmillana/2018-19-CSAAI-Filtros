@@ -2,16 +2,19 @@
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title> Filtro 1</title>
+    <title> Filtros</title>
     <link rel="stylesheet" href="style.css">
     <script src="filtro.js"></script>
   </head>
   <body onload="main();">
+    <canvas id="display"></canvas>
+    <img src="black-hole.jpg" id="img">
     <p>Imagen original</p>
     <!-- PRUEBA
     <img src="black-hole.jpg" id="img"> -->
     <img src="logoURJC.png" id="img">
-    <p>Imagen manipulada</p>
-    <canvas id="display"></canvas>
+    <p>Establece el umbral de rojo:</p>
+    <input type="range" id="deslizador" min="0" max="255" value="0"/>
+    <p id="range_value">00</p>
   </body>
 </html>
