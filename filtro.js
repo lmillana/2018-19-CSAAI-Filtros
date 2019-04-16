@@ -45,30 +45,29 @@ function main() {
     ctx.drawImage(img, 0,0);
 
     //-- Obtener la imagen del canvas en pixeles
-    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
 
     //-- Obtener el array con todos los píxeles
     var data = imgData.data
 
-    //-- Obtener el umbral según el desliador
+    //-- Obtener el umbral según el deslizador:
     umbral_R = deslizador_R.value
     umbral_G = deslizador_G.value
     umbral_B = deslizador_B.value
 
-    //-- Filtrar la imagen según el umbral ROJO:
+    //-- Filtrar la imagen según el umbral:
     for (var i = 0; i < data.length; i+=4) {
-      if (data[i] > umbral_R)
+      if (data[i] > umbral_R){
         data[i] = umbral_R;
-    }
-    //-- Filtrar la imagen según el umbral VERDE:
-    for (var i = 0; i < data.length; i+=4) {
-      if (data[i] > umbral_G)
-        data[i] = umbral_G;
-    }
-    //-- Filtrar la imagen según el umbral AZUL:
-    for (var i = 0; i < data.length; i+=4) {
-      if (data[i] > umbral_B)
-        data[i] = umbral_B;
+      }
+
+      if (data[i+1] > umbral_G){
+        data[i+1] = umbral_G;
+      }
+
+      if (data[i+2] > umbral_B){
+        data[i+2] = umbral_B;
+      }
     }
   }
 
