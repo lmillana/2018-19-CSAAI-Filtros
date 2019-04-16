@@ -9,12 +9,26 @@
   <body onload="main();">
     <canvas id="display"></canvas>
     <img src="black-hole.jpg" id="img">
-    <p>Imagen original</p>
     <!-- PRUEBA
     <img src="black-hole.jpg" id="img"> -->
     <img src="logoURJC.png" id="img">
+
+    <!-- Umbral ROJO:-->
     <p>Establece el umbral de rojo:</p>
-    <input type="range" id="deslizador" min="0" max="255" value="0"/>
-    <p id="range_value">00</p>
+    <input type="range" id="deslizador_R" min="0" max="255" value="255"/>
+    <p id="range_value_R">00</p>
+    <!-- Umbral VERDE:-->
+    <p>Establece el umbral de verde:</p>
+    <input type="range" id="deslizador_G" min="0" max="255" value="255"/>
+    <p id="range_value_G">00</p>
+    <!-- Umbral AZUL:-->
+    <p>Establece el umbral de azul:</p>
+    <input type="range" id="deslizador_B" min="0" max="255" value="255"/>
+    <p id="range_value_B">00</p>
+
+    <!-- Escala de GRISES:-->
+    <p> Escala de grises: </p>
+    <button type="button" name="button" id="gris"> Gris </button>
+
   </body>
 </html>
