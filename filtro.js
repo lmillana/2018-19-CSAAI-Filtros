@@ -48,10 +48,14 @@ function main() {
     //-- Obtener el array con todos los píxeles
     data = imgData.data
 
-
     deslizador_R.value = 255;
     deslizador_G.value = 255;
     deslizador_B.value = 255;
+
+    // -- Mostrar el nuevo valor del deslizador:
+    range_value_R.innerHTML = deslizador_R.value
+    range_value_G.innerHTML = deslizador_G.value
+    range_value_B.innerHTML = deslizador_B.value
   }
 
   function toRGB() {
