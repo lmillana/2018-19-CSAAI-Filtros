@@ -21,6 +21,9 @@ function main() {
   //-- Botón para el cambio a escala de grises:
   gris = document.getElementById('gris')
 
+  //-- Botón para volver a la imagen original:
+  restart = document.getElementById('restart')
+
   //-- Se establece como tamaño del canvas el mismo
   //-- que el de la imagen original
   canvas.width = img.width;
@@ -34,6 +37,23 @@ function main() {
   //-- No se han hecho manipulaciones todavia
   ctx.drawImage(img, 0,0);
 
+  function toReset () {
+    //-- Situar la imagen original en el canvas
+    //-- No se han hecho manipulaciones todavia
+    ctx.drawImage(img, 0,0);
+
+    //-- Obtener la imagen del canvas en pixeles
+    imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+
+    //-- Obtener el array con todos los píxeles
+    data = imgData.data
+
+
+    deslizador_R.value = 255;
+    deslizador_G.value = 255;
+    deslizador_B.value = 255;
+  }
+
   function toRGB() {
     // -- Mostrar el nuevo valor del deslizador:
     range_value_R.innerHTML = deslizador_R.value
@@ -45,10 +65,10 @@ function main() {
     ctx.drawImage(img, 0,0);
 
     //-- Obtener la imagen del canvas en pixeles
-    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+    imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
 
     //-- Obtener el array con todos los píxeles
-    var data = imgData.data
+    data = imgData.data
 
     //-- Obtener el umbral según el deslizador:
     umbral_R = deslizador_R.value
@@ -72,6 +92,18 @@ function main() {
   }
 
   function toGrey() {
+
+    //-- Situar la imagen original en el canvas
+    //-- No se han hecho manipulaciones todavia
+    ctx.drawImage(img, 0,0);
+
+    //-- Obtener la imagen del canvas en pixeles
+    imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+
+    //-- Obtener el array con todos los píxeles
+    data = imgData.data
+
+
     for (var i = 0; i < data.length;i +=4) {
       light = (3 * data[i] + 4 * data[i+1] + data[i+2])/8
         data[i] = light;
@@ -101,6 +133,12 @@ function main() {
 
   gris.onclick = () => {
     toGrey();
+    //-- Poner la imagen modificada en el canvas:
+    ctx.putImageData(imgData, 0, 0);
+  }
+
+  restart.onclick = () => {
+    toReset();
     //-- Poner la imagen modificada en el canvas:
     ctx.putImageData(imgData, 0, 0);
   }
